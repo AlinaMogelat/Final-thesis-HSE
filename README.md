@@ -10,10 +10,11 @@ The `data.zip` file contains the source CSV. Unzip it before running.
 
 ## Project Structure
 
+```
 ├── Final_thesis.ipynb     — main notebook with the full pipline
 ├── data.zip               — raw data (freMTPL2freq.csv)
 └── README.md
-
+```
 ## Notebook Contents
 
 1. **Exploratory Data Analysis (EDA)** - descriptive statistics, distributions, checking for zero-inflation and overdispersion.
