@@ -11,21 +11,31 @@ The `data.zip` file contains the source CSV. Unzip it before running.
 ## Project Structure
 
 ```
-├── Final_thesis.ipynb     — main notebook with the full pipline
-├── data.zip               — raw data (freMTPL2freq.csv)
+├── Final_thesis.ipynb     - main notebook with the full pipeline
+├── data.zip               - raw data (freMTPL2freq.csv)
+├── requirements.txt       - library versions for environment reproducibility
 └── README.md
 ```
 ## Notebook Contents
 
 1. **Exploratory Data Analysis (EDA)** - descriptive statistics, distributions, checking for zero-inflation and overdispersion.
-2. **Preprocessing** — filtering short exposure periods, clipping outliers, log transformation of density, one-hot encoding of categorical variables.
+2. **Preprocessing** - filtering short exposure periods, clipping outliers, log transformation of density, one-hot encoding of categorical features, region grouping by observed claim frequency.
 3. **Base models (GLM):** Poisson, Negative Binomial, ZIP, ZINB.
 4. **Base models (Ensembles):** Random Forest and XGBoost (with hyperparameter tuning via Optuna).
 5. **Final model - stacking:** out-of-fold predictions using ZIP + RF + XGBoost, meta-model based on Ridge regression.
-6. **Interpretation (SHAP)** — global feature importance, summary plot, dependence plots for key variables.
-7. **Final comparison** — table and visualization of all models by Poisson deviance, MAE, and Gini coefficient.
+6. **Interpretation (SHAP)** - global feature importance, summary plot, dependence plots for key variables.
+7. **Final comparison** - table and visualization of all models by Poisson deviance, MAE, and Gini coefficient.
 
 ## Stack
 
 Python 3.10+, pandas, numpy, scikit-learn, statsmodels, xgboost, optuna, shap, matplotlib, seaborn.
 
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+## Reproducibility
+
+All random seeds are fixed (`random_state = 2026`). XGBoost hyperparameter tuning via Optuna was performed on GPU (CUDA).
